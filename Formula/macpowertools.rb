@@ -15,6 +15,18 @@ class Macpowertools < Formula
 
   def caveats
     <<~EOS
+      To use MacPowerTools:
+        open #{prefix}/MacPowerTools.app
+
+      Or create shortcut in Applications:
+        ln -sf #{prefix}/MacPowerTools.app /Applications/
+
+      Grant Screen Recording and Accessibility permissions when prompted.
+    EOS
+  end
+
+  def caveats
+    <<~EOS
       To start MacPowerTools:
         MacPowerTools &
 
