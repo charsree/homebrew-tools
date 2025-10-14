@@ -9,7 +9,8 @@ class Macpowertools < Formula
 
   def install
     system "./build.sh"
-    bin.install "build/MacPowerTools"
+    system "./create_apps.sh"
+    prefix.install "MacPowerTools.app"
   end
 
   def caveats
