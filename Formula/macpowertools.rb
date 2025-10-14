@@ -15,13 +15,19 @@ class Macpowertools < Formula
 
   def caveats
     <<~EOS
-      To use MacPowerTools:
+      MacPowerTools has been installed as an app bundle.
+      
+      To launch:
         open #{prefix}/MacPowerTools.app
-
-      Or create shortcut in Applications:
-        ln -sf #{prefix}/MacPowerTools.app /Applications/
-
+      
+      To add to Applications folder:
+        cp -r #{prefix}/MacPowerTools.app /Applications/
+      
       Grant Screen Recording and Accessibility permissions when prompted.
+      
+      Keyboard shortcuts:
+        Cmd+Shift+T - Extract text from screen
+        Cmd+Shift+V - Show clipboard history
     EOS
   end
 
