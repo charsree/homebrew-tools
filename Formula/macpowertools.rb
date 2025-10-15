@@ -3,6 +3,7 @@ class Macpowertools < Formula
   homepage "https://github.com/charsree/MacPowerTools"
   url "https://github.com/charsree/MacPowerTools/archive/refs/heads/main.tar.gz"
   version "1.0.0"
+  sha256 "6aa42fd6480bcdb53ba705fa360fddd1854308257845400c791c8b3b20a244a4"
 
   depends_on :macos
 
