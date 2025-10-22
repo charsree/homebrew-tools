@@ -1,13 +1,12 @@
 class Macpowertools < Formula
   desc "Mac Power Tools - Text Extractor and Clipboard History with Custom Hotkeys"
   homepage "https://github.com/charsree/MacPowerTools"
-  url "https://github.com/charsree/MacPowerTools/archive/697c9d0bb020b2ee72ba70dd63b8397d6de4b825.tar.gz"
-  sha256 "a5fcf1fc6eb75be701b215f310d5dc2d33b20098acd5ac567f7c539653366f39"
+  url "https://github.com/charsree/MacPowerTools/archive/a7221cd1d7b8ecab2002c8e6365674c273e74989.tar.gz"
+  sha256 "b7f6cc2d3b771ce9db9e4f6ef436658db8c64aa4d3001f33f041e307a643b9e1"
   version "2.0"
   license "MIT"
 
   depends_on :macos
-  depends_on arch: [:x86_64, :arm64]
 
   def install
     # Build the application
