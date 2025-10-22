@@ -35,12 +35,10 @@ class Macpowertools < Formula
         📝 Text Extractor: Customizable hotkeys (default Cmd+Shift+T)
         📋 Clipboard History: Customizable hotkeys (default Cmd+Shift+V)
         🎛️ Custom Hotkeys: Configure via Preferences menu
-        🔐 Smart Permissions: Only requested when features are used
         🚀 Login Items: Easy management via menu bar
 
       First time setup:
-        • No startup dialogs - clean launch experience
-        • Permissions requested only when you use features
+        • Permissions requested when you use features
         • Custom hotkeys: Click ⌬ → Preferences
         • Login items: Click ⌬ → Add to Login Items
 
