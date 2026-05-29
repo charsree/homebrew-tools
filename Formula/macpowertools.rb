@@ -1,9 +1,9 @@
 class Macpowertools < Formula
   desc "Mac Power Tools - Text Extractor and Clipboard History with Custom Hotkeys"
   homepage "https://github.com/charsree/MacPowerTools"
-  url "https://github.com/charsree/MacPowerTools/archive/9acdc00b7254ccbfd2aabbae0c23d28f239ec24a.tar.gz"
-  sha256 "5f181ee7aad2f7d836b9e0037fca0db1ce6ceddd9f967bd6489219732649dbac"
-  version "2.0"
+  url "https://github.com/charsree/MacPowerTools/archive/refs/tags/v2.1.tar.gz"
+  sha256 "bc51814b8dd084d3f69344ed8d84664c5805aaf555fbe898f7419da9e65451e1"
+  version "2.1"
   license "MIT"
 
   depends_on :macos
@@ -32,17 +32,20 @@ class Macpowertools < Formula
         3. Look for the ⌬ diamond icon in your menu bar
 
       Features:
-        📝 Text Extractor: Customizable hotkeys (default Cmd+Shift+T)
+        📝 Text Extractor: Customizable hotkeys (default Cmd+Shift+Y)
         📋 Clipboard History: Customizable hotkeys (default Cmd+Shift+V)
-        🎛️ Custom Hotkeys: Configure via Preferences menu
+        🖼️  Image Clipboard: Screenshots and copied images join the history
+        🎛️  Custom Hotkeys: Configure via Preferences menu
         🚀 Login Items: Easy management via menu bar
 
       First time setup:
         • Permissions requested when you use features
         • Custom hotkeys: Click ⌬ → Preferences
-        • Login items: Click ⌬ → Add to Login Items
+        • Login items: Click ⌬ → Add to Login Items (now uses SMAppService)
 
-      Version 2.0 includes custom hotkeys, smart permissions, and login items management!
+      Version 2.1 adds image clipboard support, fixes preferences-window
+      focus, fixes login-items add/remove, and changes the default text-
+      extractor hotkey from Cmd+Shift+T to Cmd+Shift+Y.
     EOS
   end
 
