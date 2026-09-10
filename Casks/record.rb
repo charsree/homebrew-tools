@@ -1,6 +1,6 @@
 cask "record" do
-  version "0.3.1"
-  sha256 "babc4df176fa4df35c538b8003f905e07d9e1fd1695828a7892b5ed53a47576c"
+  version "0.3.2"
+  sha256 "f25779547c2cfc78d85353ab479306d778a823a910d28eaa38052c4072949790"
 
   url "https://github.com/charsree/record/releases/download/v#{version}/Record-#{version}.zip"
   name "Record"
@@ -17,20 +17,12 @@ cask "record" do
 
   app "Record.app"
 
-  # Record is ad-hoc signed (no paid Apple Developer ID yet). By default,
-  # Homebrew Cask marks downloaded apps as quarantined, which triggers
-  # macOS Gatekeeper's "cannot verify this app is free of malware" dialog
-  # on first launch. Strip the quarantine bit so the app opens normally.
-  # Users who want the extra scrutiny can install with
-  #   brew install --cask record --quarantine
+  # Record is ad-hoc signed. Strip the quarantine bit so macOS doesn't
+  # block first launch with the "cannot verify malware" dialog.
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-dr", "com.apple.quarantine", "/Applications/Record.app"],
                    must_succeed: false
-  end
-
-  uninstall_postflight do
-    # No-op; here for symmetry.
   end
 
   zap trash: [
