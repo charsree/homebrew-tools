@@ -1,9 +1,9 @@
 class Record < Formula
   desc "Local-first macOS meeting assistant with mic, system audio, screen OCR, and Kiro chat"
   homepage "https://github.com/charsree/record"
-  url "https://github.com/charsree/record/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "c24d6bdc6498860cab34f56a78a649fdc0ed6475ed0956188b798b6b4117d0cd"
-  version "0.2.0"
+  url "https://github.com/charsree/record/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "95ad0aa70e8058c3f2b2559c3618212e62fd43aac6911d5c9e62804624b41a02"
+  version "0.3.0"
   license "MIT"
 
   depends_on :macos
