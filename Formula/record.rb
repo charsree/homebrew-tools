@@ -1,41 +1,31 @@
 class Record < Formula
   desc "Local-first macOS meeting assistant with mic, system audio, screen OCR, and Kiro chat"
   homepage "https://github.com/charsree/record"
-  url "https://github.com/charsree/record/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "95ad0aa70e8058c3f2b2559c3618212e62fd43aac6911d5c9e62804624b41a02"
-  version "0.3.0"
+  url "https://github.com/charsree/record/releases/download/v0.3.1/Record-0.3.1.zip"
+  sha256 "babc4df176fa4df35c538b8003f905e07d9e1fd1695828a7892b5ed53a47576c"
+  version "0.3.1"
   license "MIT"
 
   depends_on :macos
-  depends_on xcode: ["16.0", :build]
-  depends_on "whisper-cpp"
 
   def install
-    # Build the .app via our packaged build script.
-    system "chmod", "+x", "scripts/build-app.sh"
-    system "zsh", "scripts/build-app.sh"
+    # Pre-built .app bundle sits at the archive root because
+    # tag-release.sh zipped it with .
+    prefix.install "Record.app"
 
-    # Keep a canonical copy inside the Cellar (Homebrew tracks this for
-    # uninstall / upgrade). The Cellar prefix is /opt/homebrew/Cellar on
-    # Apple Silicon and /usr/local/Cellar on Intel — Homebrew handles the
-    # difference for us.
-    prefix.install "Build/Record.app"
-
-    # Auto-install into /Applications so Launchpad / Spotlight / TCC
-    # treat Record like any drag-installed app. This is what the user
-    # actually wants — no manual cp step. If /Applications isn't
-    # writable (locked-down machine or MDM), we leave the Cellar copy
-    # alone and the caveats explain how to move it by hand.
+    # Auto-install into /Applications so Launchpad / Spotlight
+    # / TCC treat it like any drag-installed app. Falls back to
+    # a caveats note when /Applications isn't writable.
     applications = "/Applications"
     if File.writable?(applications)
       rm_rf "#{applications}/Record.app"
       cp_r "#{prefix}/Record.app", "#{applications}/Record.app"
     end
 
-    # Convenience: `record` in Terminal launches the installed app.
+    # `record` in Terminal opens the app.
     (bin/"record").write <<~SH
       #!/bin/sh
-      exec open -a "Record" "$@"
+      exec open -a "Record" "\$@"
     SH
     chmod 0755, bin/"record"
   end
@@ -48,18 +38,18 @@ class Record < Formula
         Launch it:
           open -a Record        # or just: record
 
-        First launch will ask for Microphone + Screen Recording. Grant both —
+        First launch asks for Microphone + Screen Recording. Grant both —
         system audio (Zoom/Meet/Teams/etc.) needs Screen Recording.
 
-        Open Preferences → Transcription to pick a whisper model.
-        large-v3-turbo is best for quality; base.en is smallest.
+        Pick a whisper model in Preferences → Transcription.
+        large-v3-turbo is best; base.en is smallest / fastest.
 
         Optional: install the Kiro CLI (https://kiro.dev) for chat,
         auto-title, and auto-summary. Recording + transcription work
         without it.
 
-        Data stays local, AES-GCM encrypted at:
-          ~/Library/Application Support/Record/
+        Data stays local, AES-GCM encrypted at
+        ~/Library/Application Support/Record/.
       EOS
     else
       <<~EOS
@@ -70,11 +60,6 @@ class Record < Formula
         Move it manually:
           cp -R #{prefix}/Record.app /Applications/
           open -a Record
-
-        Then grant Microphone + Screen Recording, and pick a whisper
-        model in Preferences → Transcription.
-
-        Data stays local at ~/Library/Application Support/Record/.
       EOS
     end
   end
