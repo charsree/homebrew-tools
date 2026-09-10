@@ -1,6 +1,6 @@
 cask "record" do
-  version "0.3.2"
-  sha256 "f25779547c2cfc78d85353ab479306d778a823a910d28eaa38052c4072949790"
+  version "0.3.3"
+  sha256 "fd00f3ff2b28731805bdedfa511ce9ab6bdaa00ef0f9450f8af8909ce556bd71"
 
   url "https://github.com/charsree/record/releases/download/v#{version}/Record-#{version}.zip"
   name "Record"
